@@ -12,9 +12,17 @@ IList<byte[]> imagesData = new List<byte[]>();
 IList<FaceDetectionResult> detectFaceInScencesResults = new List<FaceDetectionResult>();
 
 foreach(var argument in args) {
+    try
+    {
+        var imageData = await File.ReadAllBytesAsync(argument);
+        imagesData.Add(imageData);
+    }
+    catch (FileNotFoundException e)
+    {
+        System.Console.WriteLine("Le fichier demandé renseingé n'existe pas" + e.Message + e.FileName);
+    }
     
-    var imageData = await File.ReadAllBytesAsync(argument);
-    imagesData.Add(imageData);
+    
 }
 
 detectFaceInScencesResults = new FaceDetection().DetectInScenes(imagesData);

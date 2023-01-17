@@ -4,7 +4,6 @@ namespace Adrien.Bassail.FaceDetection;
 
 public class FaceDetection
 {
-
     public IList<FaceDetectionResult> DetectInScenes(IList<byte[]>
     imagesSceneData)
     {
@@ -24,7 +23,7 @@ public class FaceDetection
         
         return results;
     }
-
+    //For single usage in api
     public FaceDetectionResult DetectInScene(byte[] imageData)
     {
         return new FaceDetectionResult().FaceDetectionInScene(imageData);
